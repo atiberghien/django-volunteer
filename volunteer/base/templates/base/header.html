@@ -1,0 +1,25 @@
+{% load i18n %}
+<div id="title-panel" class="span10 well">
+	<a href="http://innovafrica.org/fr/forum/abidjan-2013/" target="_self" title="Forum InnovAfrica 2013 Abidjan">
+		<img alt="" src="http://imaginationforpeople.org/site_media/uploads/logo_innovafrica_long_1_6.png" style="font-size: 10px; float: right; margin-left: 5px; margin-right: 5px;" width="200">
+	</a>
+	<h2 style="text-align: center"> {{event.name|capfirst}} - {% trans 'Volunteer management' %} </h2>
+</div>
+<div id="login-panel" class="span2 well">
+	{% if user.is_authenticated %}
+	<p>
+		{% trans 'user'|capfirst%} : {{ user.first_name }} {{ user.last_name }}
+		<br />
+		<a href="{% url 'logout'%}?next={% url 'volunteer-index'%}">{% trans 'logout' %} </a>
+	</p>
+	{% else %}
+	<form class="form-signin" method="post" action="{% url 'login' %}"> {% csrf_token %}
+		<input type="hidden" name="next" value="{% url 'volunteer-index' %}">
+		<input name="username" type="text" class="form-control" placeholder="{% trans 'username'|capfirst %}" required="">
+		<input name="password" type="password" class="form-control" placeholder="{% trans 'password'|capfirst %}" required="">
+		<button class="btn btn-lg btn-primary btn-block" type="submit">
+		{% trans 'login'|capfirst%}
+		</button>
+	</form>
+	{% endif %}
+</div>

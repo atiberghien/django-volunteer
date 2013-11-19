@@ -1,0 +1,5 @@
+*.pyc
+/volunteer/.settings/
+/volunteer/.pydevproject
+/volunteer/.project
+/db.sqlite3

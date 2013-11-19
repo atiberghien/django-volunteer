@@ -1,0 +1,97 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Alban <alban@nonetype.fr>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-11-19 23:35+0000\n"
+"PO-Revision-Date: 2013-11-20 00:39+0100\n"
+"Last-Translator: Alban <alban@nonetype.fr>\n"
+"Language-Team: French <alban@nonetype.fr>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Gtranslator 2.91.6\n"
+
+#: models.py:11
+msgid "name"
+msgstr "nom"
+
+#: models.py:18
+msgid "slot start"
+msgstr "début"
+
+#: models.py:19
+msgid "slot_end"
+msgstr "fin"
+
+#: models.py:20
+msgid "desc"
+msgstr "description"
+
+#: models.py:30
+msgid "phone"
+msgstr "téléphone"
+
+#: models.py:31
+msgid "availibility"
+msgstr "disponibilité"
+
+#: models.py:32
+msgid "comment"
+msgstr "commentaire"
+
+#: models.py:38
+msgid "volunteer"
+msgstr "volontaire"
+
+#: templates/base/cal.html:6 templates/base/header.html:6
+#: templates/base/index.html:6
+msgid "Volunteer management"
+msgstr "gestion des bénévoles"
+
+#: templates/base/header.html:11
+msgid "user"
+msgstr "utilisateur"
+
+#: templates/base/header.html:13
+msgid "logout"
+msgstr "déconnexion"
+
+#: templates/base/header.html:18
+msgid "username"
+msgstr "nom d'utilisateur"
+
+#: templates/base/header.html:19
+msgid "password"
+msgstr "mot de passe"
+
+#: templates/base/header.html:21
+msgid "login"
+msgstr "connexion"
+
+#: templates/base/index.html:45
+msgid "Calendar"
+msgstr "Calendrier"
+
+#: templates/base/index.html:49
+msgid "Volunteer list"
+msgstr "Liste des bénévoles"
+
+#: templates/base/index.html:57
+msgid "Not volunteer"
+msgstr "Aucun bénévole"
+
+#: templates/base/index.html:140
+msgid "Update"
+msgstr "Mettre à jour"
+
+#: templates/base/index.html:142
+msgid "Register"
+msgstr "S'enregistrer"
