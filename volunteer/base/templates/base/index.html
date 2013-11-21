@@ -46,7 +46,7 @@
 						<ul class="nav nav-list">
 							<li class="nav-header" >
 								<i style="float:left"  class="icon-user"></i>
-								<span style="font-size: 15px; font-weight: bold;"> {% trans 'Volunteer list' %} </span>
+								<span style="font-size: 15px; font-weight: bold;"> {% trans 'Volunteer list' %} ({{volunteers.count}})</span>
 							</li>
 							{% for volunteer  in volunteers %}
 							<li>
