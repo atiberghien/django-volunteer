@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     
     'south',
     'django_extensions',
+    'django_mailman',
     
     'volunteer.base',
 )

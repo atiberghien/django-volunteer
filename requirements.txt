@@ -4,3 +4,4 @@ argparse==1.2.1
 django-extensions==1.2.5
 six==1.4.1
 wsgiref==0.1.2
+-e hg+https://bitbucket.org/albertoconnor/django-mailman/@0.4#egg=django-mailman

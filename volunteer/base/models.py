@@ -6,9 +6,11 @@ from django.db.models.signals import post_save, pre_save
 from django.contrib.auth.models import User, AbstractBaseUser
 from django.utils.text import slugify
 from django.contrib.auth import login
+from django_mailman.models import List
 
 class Event(models.Model):
     name = models.CharField(_('name'), max_length=50)
+    ml = models.ForeignKey(List, null=True)
     
     def __unicode__(self):
         return self.name
@@ -18,6 +20,7 @@ class EventSlot(models.Model):
     slot_start = models.DateTimeField(_('slot start'))
     slot_end = models.DateTimeField(_('slot_end'))
     desc = models.CharField(_('desc'), max_length=50)
+    
     
     def __unicode__(self):
         return "%s - %s %s" % (self.event, unicode(WEEKDAYS[self.slot_start.weekday()]), self.desc)
@@ -36,4 +39,11 @@ class Volunteer(User):
     
     class Meta:
         verbose_name = _("volunteer")
+
+def add_to_event_ml(sender, instance, created, **kwargs):
+    if created and Volunteer.objects.filter(email=instance.email).count() == 1:
+        event = Event.objects.get(id=1)
+        event.ml.subscribe(instance.email, instance.first_name, instance.last_name)
+    
+post_save.connect(add_to_event_ml, Volunteer)
     
