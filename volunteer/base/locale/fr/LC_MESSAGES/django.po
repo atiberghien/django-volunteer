@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-19 23:35+0000\n"
-"PO-Revision-Date: 2013-11-20 00:39+0100\n"
+"POT-Creation-Date: 2013-11-22 02:54+0000\n"
+"PO-Revision-Date: 2013-11-22 03:55+0100\n"
 "Last-Translator: Alban <alban@nonetype.fr>\n"
 "Language-Team: French <alban@nonetype.fr>\n"
 "Language: \n"
@@ -19,79 +19,87 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Gtranslator 2.91.6\n"
 
-#: models.py:11
+#: models.py:12
 msgid "name"
 msgstr "nom"
 
-#: models.py:18
+#: models.py:20
 msgid "slot start"
 msgstr "début"
 
-#: models.py:19
+#: models.py:21
 msgid "slot_end"
 msgstr "fin"
 
-#: models.py:20
+#: models.py:22
 msgid "desc"
 msgstr "description"
 
-#: models.py:30
+#: models.py:33
 msgid "phone"
 msgstr "téléphone"
 
-#: models.py:31
+#: models.py:34
 msgid "availibility"
 msgstr "disponibilité"
 
-#: models.py:32
+#: models.py:35
 msgid "comment"
 msgstr "commentaire"
 
-#: models.py:38
+#: models.py:41
 msgid "volunteer"
 msgstr "volontaire"
 
-#: templates/base/cal.html:6 templates/base/header.html:6
-#: templates/base/index.html:6
-msgid "Volunteer management"
-msgstr "gestion des bénévoles"
+#: templates/base.html:5 templates/base/header.html:6
+msgid "Volunteer coordination"
+msgstr "Coordination des bénévoles"
 
-#: templates/base/header.html:11
-msgid "user"
-msgstr "utilisateur"
+#: templates/base/cal.html:31
+msgid "Back to the form"
+msgstr "Retour au formulaire"
 
-#: templates/base/header.html:13
+#: templates/base/header.html:14
 msgid "logout"
 msgstr "déconnexion"
 
-#: templates/base/header.html:18
+#: templates/base/header.html:19
 msgid "username"
 msgstr "nom d'utilisateur"
 
-#: templates/base/header.html:19
+#: templates/base/header.html:20
 msgid "password"
 msgstr "mot de passe"
 
-#: templates/base/header.html:21
+#: templates/base/header.html:22
 msgid "login"
 msgstr "connexion"
 
-#: templates/base/index.html:45
-msgid "Calendar"
-msgstr "Calendrier"
+#: templates/base/index.html:36
+msgid "See the availability agenda"
+msgstr "Voir le calendrier des disponibilités"
 
-#: templates/base/index.html:49
+#: templates/base/index.html:40
 msgid "Volunteer list"
 msgstr "Liste des bénévoles"
 
-#: templates/base/index.html:57
+#: templates/base/index.html:48
 msgid "Not volunteer"
 msgstr "Aucun bénévole"
 
-#: templates/base/index.html:140
+#: templates/base/index.html:131
 msgid "Update"
 msgstr "Mettre à jour"
 
-#: templates/base/index.html:142
+#: templates/base/index.html:133
 msgid "Register"
 msgstr "S'enregistrer"
+
+#~ msgid "Volunteer management"
+#~ msgstr "gestion des bénévoles"
+
+#~ msgid "user"
+#~ msgstr "utilisateur"
+
+#~ msgid "Calendar"
+#~ msgstr "Calendrier"

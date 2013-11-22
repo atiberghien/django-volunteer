@@ -1,79 +1,75 @@
+{% extends 'base.html' %}
 {% load i18n %}
 
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>{{event.name|capfirst}} - {% trans 'Volunteer management' %}</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<!-- Bootstrap -->
-		<link href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet" media="screen">
-		<link href="{{STATIC_URL}}css/fullcalendar.css" rel="stylesheet" media="screen">
-		<link href="{{STATIC_URL}}css/signin.form.css" rel="stylesheet" media="screen">
-		
-		<style>
-			.eventslot {
-				color : white;
-				background-color: grey;
-				text-align: center;
+{% block extra_head %}
+<link href="{{STATIC_URL}}css/fullcalendar.css" rel="stylesheet" media="screen">
+<style>
+	.eventslot {
+		color : white;
+		background-color: grey;
+		text-align: center;
+	}
+	.fc-event-title {
+		font-size: 15px;
+		font-weight: bold;
+		margin-top : 15px;
+	}
+	.eventslot-empty{
+		color : red;
+		background-color: grey;
+		text-align: center;
+	}
+	h5.go-back {
+		border-bottom: 1px solid #eee;
+		padding-bottom: 10px;
+		margin-top: -5px;
+		margin-bottom: 16px;
+	}
+</style>
+{% endblock %}
+{% block content %}
+<h5 class="go-back"><a href="/">{% trans 'Back to the form' %}</a></h5>
+<div id="calendar"></div>
+{% endblock%}
+{% block extra_script %}	
+<script src="{{STATIC_URL}}js/fullcalendar.min.js"></script>
+<script>
+	$(document).ready(function() {
+	    $('#calendar').fullCalendar({
+	    	header: {left: '', center: '', right: ''},
+	    	allDaySlot : false,
+	    	editable: false,
+	    	firstDay : 1,
+	    	hiddenDays: [0],
+	    	dayNames : ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+	    	columnFormat : {
+			    month: 'dddd',    // Mon
+			    week: 'dddd d', // Mon 9/7
+			    day: 'dddd d'  // Monday 9/7
+			},
+			defaultView: 'agendaWeek',
+			allDayDefault: false,
+	    	minTime : '9:00am',
+	    	maxTime : '9:00pm',
+	    	events: [
+	    		{% for slot in slots %}
+				{
+					id : '{{slot.id}}',
+					title: '{{slot.volunteer_set.count}}',
+					start: new Date({{slot.slot_start.year}}, {{slot.slot_start.month}}-1, {{slot.slot_start.day}}, {{slot.slot_start.hour}}, {{slot.slot_start.minute}}),
+					end: new Date({{slot.slot_end.year}}, {{slot.slot_end.month}}-1, {{slot.slot_end.day}}, {{slot.slot_end.hour}}, {{slot.slot_end.minute}}),
+					className : {% if slot.volunteer_set.count %}'eventslot'{%else%}'eventslot-empty'{% endif%},
+					tip : "{% for v in slot.volunteer_set.all %}* {{v.first_name|title}} {{v.last_name|title}}\n{%endfor%}",
+				},
+				{% endfor %}
+			],
+			eventRender: function(event, element) {
+    			element.click(function(){
+    				element.find('.fc-event-inner').append($("<div style='background-color:red'>PROUT</div>"));
+    			});
 			}
-			.fc-event-title {
-				font-size: 15px;
-				font-weight: bold;
-				margin-top : 15px;
-			}
-			.eventslot-empty{
-				color : red;
-				background-color: grey;
-				text-align: center;
-			}
-			
-		</style>
-	</head>
-	<body>
-		<div class="container-fluid">
-			<div class="row-fluid">
-				{% include "base/header.html" %}
-			</div>
-			<div class="row-fluid">
-				<div id="calendar"></div>
-			</div>
-		</div>
-		
-		<script src="http://code.jquery.com/jquery.js"></script>
-		<script src="{{STATIC_URL}}js/bootstrap.min.js"></script>
-		<script src="{{STATIC_URL}}js/fullcalendar.min.js"></script>
-		<script>
-			$(document).ready(function() {
-			    $('#calendar').fullCalendar({
-			    	header: {left: '', center: '', right: ''},
-			    	allDaySlot : false,
-			    	editable: false,
-			    	firstDay : 1,
-			    	hiddenDays: [0],
-			    	dayNames : ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
-			    	columnFormat : {
-					    month: 'dddd',    // Mon
-					    week: 'dddd d', // Mon 9/7
-					    day: 'dddd d'  // Monday 9/7
-					},
-					defaultView: 'agendaWeek',
-					allDayDefault: false,
-			    	minTime : '9:00am',
-			    	maxTime : '9:00pm',
-			    	events: [
-			    		{% for slot in slots %}
-						{
-							id : '{{slot.id}}',
-							title: '{{slot.volunteer_set.count}}',
-							start: new Date({{slot.slot_start.year}}, {{slot.slot_start.month}}-1, {{slot.slot_start.day}}, {{slot.slot_start.hour}}, {{slot.slot_start.minute}}),
-							end: new Date({{slot.slot_end.year}}, {{slot.slot_end.month}}-1, {{slot.slot_end.day}}, {{slot.slot_end.hour}}, {{slot.slot_end.minute}}),
-							className : {% if slot.volunteer_set.count %}'eventslot'{%else%}'eventslot-empty'{% endif%}
-						},
-						{% endfor %}
-					]
-			    });
-			    $('#calendar').fullCalendar('gotoDate', 2013 , 10, 25);
-			});
-		</script>
-	</body>
-</html>
+	    });
+	    $('#calendar').fullCalendar('gotoDate', 2013 , 10, 25);
+	});
+</script>
+{% endblock%}

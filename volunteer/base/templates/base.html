@@ -1,0 +1,35 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{event.name|capfirst}} - {% trans 'Volunteer coordination' %}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Bootstrap -->
+		<link href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<link href="{{STATIC_URL}}css/signin.form.css" rel="stylesheet" media="screen">
+
+		{% block extra_head %}
+		{% endblock %}
+		
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="row-fluid">
+				{% include "base/header.html" %}
+			</div>
+			<div class="row-fluid">
+				{% block content %}
+				{% endblock%}
+			</div>		
+			{% block footer %}	
+			<div class="row-fluid">
+				<div class="span12 panel-footer" style="border-top: 1px solid #eee;margin-top: 15px;"></div>
+			</div>
+			{% endblock %}
+		</div>
+		<script src="http://code.jquery.com/jquery.js"></script>
+		<script src="{{STATIC_URL}}js/bootstrap.min.js"></script>
+		{% block extra_script %}
+		{% endblock%}
+	</body>
+</html>

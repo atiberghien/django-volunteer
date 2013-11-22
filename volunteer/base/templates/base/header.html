@@ -1,16 +1,17 @@
 {% load i18n %}
 <div id="title-panel" class="span10 well">
 	<a href="http://innovafrica.org/fr/forum/abidjan-2013/" target="_blank" title="Forum InnovAfrica 2013 Abidjan">
-		<img alt="" src="http://imaginationforpeople.org/site_media/uploads/logo_innovafrica_long_1_6.png" style="font-size: 10px; float: right; margin-left: 5px; margin-right: 5px;" width="200">
+		<img alt="" src="http://imaginationforpeople.org/site_media/uploads/logo_innovafrica_long_1_6.png" style="float: right; margin-top: 5px; margin-right: 5px;" width="300">
 	</a>
-	<h2 style="text-align: center"> {{event.name|capfirst}} - {% trans 'Volunteer management' %} </h2>
+	<h3 style="text-align: center"> {{event.name|capfirst}} - {% trans 'Volunteer coordination'|capfirst %} </h3>
+	<h5 style="text-align: center">Contact : alban.tiberghien@innovafrica.org / +225 77 46 59 11</h5>
 </div>
 <div id="login-panel" class="span2 well">
 	{% if user.is_authenticated %}
 	<p>
-		{% trans 'user'|capfirst%} : {{ user.first_name }} {{ user.last_name }}
+		{{ user.first_name }} {{ user.last_name }}
 		<br />
-		<a href="{% url 'logout'%}?next={% url 'volunteer-index'%}">{% trans 'logout' %} </a>
+		<a href="{% url 'logout'%}?next={% url 'volunteer-index'%}">{% trans 'logout'|capfirst %} </a>
 	</p>
 	{% else %}
 	<form class="form-signin" method="post" action="{% url 'login' %}"> {% csrf_token %}
