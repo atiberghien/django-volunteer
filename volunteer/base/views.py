@@ -35,8 +35,6 @@ class UpdateVolunteerView(UpdateView):
         context = UpdateView.get_context_data(self, **kwargs)
         context["event"] = Event.objects.get(id=1)
         context["volunteers"] = Volunteer.objects.all()
-        
-        print context
         return context
     
     def dispatch(self, request, *args, **kwargs):
